@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "launch": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html --public-url ./",
+    "build": "parcel build ./src/index.html --public-url ./ --no-source-maps",
     "predeploy": "npm run clean && npm run wasm && npm run build",
     "deploy": "gh-pages -d dist",
     "clean": "rm -rf ./dist && rm -rf ./.parcel-cache",
