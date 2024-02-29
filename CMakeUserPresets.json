@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 21,
+      "patch": 0
+  },
+  "configurePresets": [
+      {
+          "name": "wasm",
+          "displayName": "Emscripten",
+          "description": "Compile to WebAssembly for embedding in webpage",
+          "binaryDir": "build/${presetName}",
+          "generator": "Ninja Multi-Config",
+          "installDir": "dist",
+          "toolchainFile": "$env{EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+      },
+      {
+          "name": "exe",
+          "displayName": "GCC 11.4.0 x86_64-linux-gnu",
+          "description": "Build a standalone executable",
+          "binaryDir": "build/${presetName}",
+          "generator": "Ninja Multi-Config",
+          "cacheVariables": {
+            "CMAKE_C_COMPILER": "/usr/bin/gcc",
+            "CMAKE_CXX_COMPILER": "/usr/bin/g++"
+          }
+      }
+  ],
+  "buildPresets": [
+      {
+          "name": "Debug",
+          "configurePreset": "wasm",
+          "configuration": "Debug"
+      },
+      {
+          "name": "Release",
+          "configurePreset": "wasm",
+          "configuration": "Release"
+      },
+      {
+        "name": "Debug Exe",
+        "configurePreset": "exe",
+        "configuration": "Debug"
+      },
+      {
+          "name": "Release Exe",
+          "configurePreset": "exe",
+          "configuration": "Release"
+      }
+  ]
+}
+

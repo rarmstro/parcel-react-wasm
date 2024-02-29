@@ -1,0 +1,34 @@
+{
+  "name": "parcel-react-wasm",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "launch": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --public-url ./",
+    "predeploy": "npm run clean && npm run wasm && npm run build",
+    "deploy": "gh-pages -d dist",
+    "clean": "rm -rf ./dist && rm -rf ./.parcel-cache",
+    "wasm": "cmake -B ./build --preset=wasm && cmake --build ./build/ --target clean && cmake --build ./build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rarmstro/parcel-react-wasm.git"
+  },
+  "author": "Robert Armstrong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rarmstro/parcel-react-wasm/issues"
+  },
+  "homepage": "https://github.com/rarmstro/parcel-react-wasm#readme",
+  "devDependencies": {
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "gh-pages": "^6.1.1",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
